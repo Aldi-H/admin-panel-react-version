@@ -15,7 +15,7 @@ export const useFindCurrentRoute = (routes: IRoute[]): IRoute | undefined => {
 
 export const GetActiveRoute = (routes: IRoute[]): string => {
   const route = useFindCurrentRoute(routes);
-  return route?.name || "Default";
+  return route?.name.toLowerCase() || "Default";
 };
 
 export const useGetActiveNavbar = (routes: IRoute[]): boolean => {
