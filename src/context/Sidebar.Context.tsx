@@ -25,7 +25,12 @@ const SidebarProvider = ({ children }: SidebarContextProps) => {
   const toggleSidebarCollapse = () => setIsCollapsed((prevState) => !prevState);
 
   return (
-    <SidebarContext.Provider value={{ isCollapsed, toggleSidebarCollapse }}>
+    <SidebarContext.Provider
+      value={{
+        isCollapsed,
+        toggleSidebarCollapse,
+      }}
+    >
       {children}
     </SidebarContext.Provider>
   );
