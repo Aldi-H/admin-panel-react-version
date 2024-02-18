@@ -1,12 +1,13 @@
 "use client";
 
-import { useSidebar } from "@/context/Sidebar.Context";
-import { Button } from "../ui/button";
 import { ListCollapse } from "lucide-react";
-import Image from "next/image";
 
-import SidebarLinks from "./components/SidebarLinks.Component";
+import { useSidebar } from "@/context/Sidebar.Context";
+
 import { IRoute } from "@/types/navigation";
+
+import { Button } from "../ui/button";
+import SidebarLinks from "./components/SidebarLinks.Component";
 
 interface SidebarProps {
   routes: IRoute[];
@@ -18,9 +19,12 @@ const Sidebar = (props: SidebarProps) => {
   const { isCollapsed, toggleSidebarCollapse } = useSidebar();
 
   return (
-    <aside className="flex relative" data-collapse>
+    <aside
+      className={`flex relative ${isCollapsed ? "me-[140px]" : "me-16"}`}
+      data-collapse
+    >
       <div
-        className={`flex flex-col max-h-screen p-3 px-0 bg-background shadow transition-all duration-300 max-w-36 min-w-16 ${
+        className={`flex flex-col h-screen fixed p-3 px-0 bg-background shadow transition-all duration-300 max-w-36 min-w-16 ${
           isCollapsed ? "w-36" : "w-16"
         }`}
       >
