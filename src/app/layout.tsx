@@ -1,5 +1,8 @@
 import type { Metadata } from "next";
 import { Inter as FontSans } from "next/font/google";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
+
 import "./globals.css";
 
 import { cn } from "@/lib/utils";
@@ -20,6 +23,8 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const queryClient = new QueryClient();
+
   return (
     <html lang="en" suppressHydrationWarning>
       <body
@@ -34,7 +39,10 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          {children}
+          <QueryClientProvider client={queryClient}>
+            <ReactQueryDevtools initialIsOpen={false} />
+            {children}
+          </QueryClientProvider>
         </ThemeProvider>
       </body>
     </html>
