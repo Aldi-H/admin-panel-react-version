@@ -1,12 +1,11 @@
 import type { Metadata } from "next";
 import { Inter as FontSans } from "next/font/google";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 
 import "./globals.css";
 
 import { cn } from "@/lib/utils";
 import ThemeProvider from "@/components/theme-provider";
+import Providers from "./providers";
 
 export const fontSans = FontSans({
   subsets: ["latin"],
@@ -23,8 +22,6 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const queryClient = new QueryClient();
-
   return (
     <html lang="en" suppressHydrationWarning>
       <body
@@ -39,10 +36,7 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <QueryClientProvider client={queryClient}>
-            <ReactQueryDevtools initialIsOpen={false} />
-            {children}
-          </QueryClientProvider>
+          <Providers>{children}</Providers>
         </ThemeProvider>
       </body>
     </html>
