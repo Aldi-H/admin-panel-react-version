@@ -37,7 +37,7 @@ const TopbarLinks = () => {
           </div>
 
           <MenubarContent
-            className="border-none mt-10 space-y-1 py-2"
+            className="border-secondary border-[1.5px] mt-10 space-y-1 py-2"
             align="end"
           >
             <MenubarItem className="space-x-4 p-2 font-medium">
