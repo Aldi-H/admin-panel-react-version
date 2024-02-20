@@ -6,6 +6,7 @@ import {
   MenubarContent,
   MenubarItem,
   MenubarMenu,
+  MenubarSeparator,
   MenubarTrigger,
 } from "@/components/ui/menubar";
 import { ModeToggle } from "@/components/ModeToggle.Component";
@@ -43,6 +44,7 @@ const TopbarLinks = () => {
               <UserRound size={20} />
               <span>Profile</span>
             </MenubarItem>
+            <MenubarSeparator />
             <MenubarItem className="space-x-4 p-2 text-red-600 focus:text-red-600 font-medium">
               <LogOut size={20} />
               <span>Logout</span>
