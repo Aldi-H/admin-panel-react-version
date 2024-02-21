@@ -24,7 +24,7 @@ const Sidebar = (props: SidebarProps) => {
       data-collapse
     >
       <div
-        className={`flex flex-col h-screen fixed p-3 px-0 bg-background shadow transition-all duration-300 max-w-36 min-w-16 ${
+        className={`flex flex-col h-screen fixed p-3 px-0 bg-background shadow transition-all duration-300 max-w-36 min-w-16 border-r-[1.5px] border-secondary ${
           isCollapsed ? "w-36" : "w-16"
         }`}
       >

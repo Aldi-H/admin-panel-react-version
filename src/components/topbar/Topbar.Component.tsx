@@ -16,7 +16,7 @@ const Topbar = (props: NavbarProps) => {
 
   return (
     <div
-      className={`bg-background fixed z-10 backdrop-filter backdrop-blur-lg bg-opacity-30 border-b-[1.5px] border-secondary rounded-xl leading-6 flex min-h-20 xl:justify-center xl:items-center mx-auto mt-0 pb-2 right-3 md:right-7 lg:right-7 xl:right-10 ps-5 pt-2 top-3 md:top-4 xl:top-5 
+      className={`bg-background fixed z-10 backdrop-filter backdrop-blur-lg bg-opacity-30 border border-secondary rounded-xl leading-6 flex min-h-20 xl:justify-center xl:items-center mx-auto mt-0 pb-2 right-3 md:right-7 lg:right-7 xl:right-10 ps-5 pt-2 top-3 md:top-4 xl:top-5 
       ${
         isCollapsed
           ? "md:w-[calc(100vw-21.5%)] lg:w-[calc(100vw-17%)] xl:w-[calc(100vw-240px)]"

@@ -37,7 +37,7 @@ const SidebarLinks = (props: SidebarLinksProps) => {
               <TooltipProvider>
                 <Tooltip>
                   <TooltipTrigger className="flex flex-col">
-                    <div className="flex flex-row xl:mb-2 xl:mx-auto py-3 px-3 rounded-md items-center align-middle space-x-4 hover:bg-secondary">
+                    <div className="flex flex-row xl:mb-2 xl:mx-auto py-3 px-3 rounded-md items-center align-middle space-x-4 bg-secondary hover:bg-secondary">
                       <span>{route.icon}</span>
                       {isCollapsed && (
                         <span className="font-bold text-sm my-auto">
