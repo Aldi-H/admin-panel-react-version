@@ -3,9 +3,11 @@
 import { useState } from "react";
 import {
   ColumnDef,
+  ColumnFiltersState,
   SortingState,
   flexRender,
   getCoreRowModel,
+  getFilteredRowModel,
   getSortedRowModel,
   useReactTable,
 } from "@tanstack/react-table";
@@ -18,6 +20,9 @@ import {
   TableHeader,
   TableRow,
 } from "../ui/table";
+import { Input } from "../ui/input";
+import { Button } from "../ui/button";
+import { Plus } from "lucide-react";
 
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[];
@@ -29,6 +34,7 @@ const DataTable = <TData, TValue>({
   data,
 }: DataTableProps<TData, TValue>) => {
   const [sorting, setsorting] = useState<SortingState>([]);
+  const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([]);
 
   const table = useReactTable({
     data,
@@ -36,13 +42,31 @@ const DataTable = <TData, TValue>({
     getCoreRowModel: getCoreRowModel(),
     onSortingChange: setsorting,
     getSortedRowModel: getSortedRowModel(),
+    onColumnFiltersChange: setColumnFilters,
+    getFilteredRowModel: getFilteredRowModel(),
     state: {
       sorting,
+      columnFilters,
     },
   });
 
   return (
     <div className="w-full">
+      <div className="flex justify-between items-center py-4">
+        <Input
+          placeholder="Search Devices...."
+          value={
+            (table.getColumn("deviceId")?.getFilterValue() as string) ?? ""
+          }
+          onChange={(event) =>
+            table.getColumn("deviceId")?.setFilterValue(event.target.value)
+          }
+          className="max-w-xs rounded-full"
+        />
+        <Button className="rounded-full text-sm" size="sm" variant="outline">
+          <Plus className="mr-2 h-4 w-4" /> Add Device
+        </Button>
+      </div>
       <div className="rounded-md bg-background border-[1.9px] border-secondary">
         <Table>
           <TableHeader>
