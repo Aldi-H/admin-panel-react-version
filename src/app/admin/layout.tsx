@@ -2,7 +2,7 @@
 
 import Sidebar from "@/components/sidebar/Sidebar.Component";
 import Topbar from "@/components/topbar/Topbar.Component";
-import SidebarProvider, { useSidebar } from "@/context/Sidebar.Context";
+import SidebarProvider from "@/context/Sidebar.Context";
 import { GetActiveRoute } from "@/lib/navigation/navigation.Utils";
 import { SidebarRoute } from "@/routes";
 
@@ -16,7 +16,7 @@ const AdminLayout = (props: DashboardlayoutProps) => {
   return (
     <SidebarProvider>
       <div className="flex w-full bg-cover top-0">
-        <header className="z-10">
+        <header className="z-[999]">
           <Sidebar routes={SidebarRoute} />
         </header>
 
@@ -30,6 +30,11 @@ const AdminLayout = (props: DashboardlayoutProps) => {
 };
 
 export default AdminLayout;
+
+{
+  /* <div className="bg-background fixed z-10 backdrop-filter backdrop-blur-lg bg-opacity-30 border border-secondary rounded-xl leading-6 flex min-h-20 xl:items-center ps-5 top-3 md:top-4 xl:top-5">
+</div> */
+}
 
 // className={`${isCollapsed ? "me-[138px]" : "me-20"}`}
 
