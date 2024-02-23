@@ -2,13 +2,7 @@
 
 import { ColumnDef } from "@tanstack/react-table";
 
-import {
-  ArrowUpDown,
-  MoreHorizontal,
-  SquarePen,
-  Trash,
-  Trash2,
-} from "lucide-react";
+import { ArrowUpDown, MoreHorizontal, SquarePen, Trash2 } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
@@ -22,6 +16,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 
 export type Devices = {
+  createdAt: string;
   userId: string;
   masterId: string;
   deviceId: string;
@@ -57,12 +52,33 @@ export const DeviceColumns: ColumnDef<Devices>[] = [
     enableHiding: false,
   },
 
+  //* CreatedAt Column
+  {
+    accessorKey: "createdAt",
+    header: ({ column }) => {
+      return (
+        <Button
+          className="p-0"
+          variant="ghost"
+          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+        >
+          <div className="capitalize">Created</div>
+          <ArrowUpDown className="ml-2 h-4 w-4" />
+        </Button>
+      );
+    },
+    cell: ({ row }) => {
+      return <div className="text-justify">{row.getValue("createdAt")}</div>;
+    },
+  },
+
   //* User Id Column
   {
     accessorKey: "userId",
     header: ({ column }) => {
       return (
         <Button
+          className="p-0"
           variant="ghost"
           onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
         >
@@ -82,6 +98,7 @@ export const DeviceColumns: ColumnDef<Devices>[] = [
     header: ({ column }) => {
       return (
         <Button
+          className="p-0"
           variant="ghost"
           onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
         >
